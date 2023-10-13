@@ -1,5 +1,5 @@
 // import { PhysicsLoader } from "enable3d";
-import { AmmoPhysics } from "@enable3d/ammo-physics";
+import { AmmoPhysics} from "@enable3d/ammo-physics";
 import * as THREE from "three";
 export class PhysicsManager {
   constructor(app) {

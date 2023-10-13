@@ -5,7 +5,6 @@ import Stats from "three/examples/jsm/libs/stats.module.js";
 
 import { CameraController } from "./CameraController";
 import { PhysicsManager } from "./PhysicsManager";
-import { PhysicsLoader } from "enable3d";
 
 const clock = new THREE.Clock();
 export class App {
@@ -41,17 +40,14 @@ export class App {
       this.scene.background = new THREE.Color(background);
     }
 
-    PhysicsLoader("/lib/ammo/kripken", () => {
-      this.PhysicsManager = new PhysicsManager(this);
+    this.PhysicsManager = new PhysicsManager(this);
 
-      this.loader.load(url, (gltf) => {
-        console.log(gltf);
+    this.loader.load(url, (gltf) => {
+      console.log(gltf);
 
-        console.log(gltf.scene);
-        this.scene.add(gltf.scene);
+      this.scene.add(gltf.scene);
 
-        inited?.(gltf);
-      });
+      inited?.(gltf.scene);
     });
 
     window.addEventListener("resize", this.onWindowResize.bind(this), false);
